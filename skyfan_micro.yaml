@@ -1,0 +1,59 @@
+packages:
+  skyfan.tuya_fan: !include
+    file: supplemental/tuya_fan.yaml
+  skyfan.tuya_light: !include
+    file: supplemental/tuya_light.yaml
+
+substitutions:
+  device_name: easy-skyfandc
+  temp_name: SkyFanDC-Temp
+  skyfan_model: "SKY1203"
+  light_name: "SkyFan DC Light"
+  fan_name: "SkyFan DC Fan"
+
+esphome:
+  name: ${device_name}
+  name_add_mac_suffix: true
+  project:
+    name: memphisraynz.easy_skyfandc
+    version: "0.9.2"
+
+esp8266:
+  board: d1_mini
+
+dashboard_import:
+  package_import_url: github://memphisraynz/skyfandc/skyfan_micro.yaml@main
+
+api:
+
+logger:
+  baud_rate: 0
+
+i2c:
+  sda: 4
+  scl: 5
+  scan: true
+
+ota:
+  - platform: esphome  
+
+wifi:
+  ap:
+    password: ""
+    
+captive_portal:
+
+uart:
+  rx_pin: GPIO3
+  tx_pin: GPIO1
+  baud_rate: 9600
+
+tuya:
+  id: tuyamcu  
+
+switch:
+  - platform: gpio
+    pin:
+      number: 2
+      inverted: true
+    id: led

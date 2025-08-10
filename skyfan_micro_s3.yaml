@@ -1,0 +1,74 @@
+packages:
+  skyfan.tuya_fan: !include
+    file: supplemental/tuya_fan.yaml
+  skyfan.tuya_light: !include
+    file: supplemental/tuya_light.yaml
+
+substitutions:
+  device_name: easy-skyfandc-s3
+  temp_name: SkyFanDC-Temp
+  skyfan_model: "SKY1203"
+  light_name: "SkyFan DC Light"
+  fan_name: "SkyFan DC Fan"
+
+esphome:
+  name: ${device_name}
+  name_add_mac_suffix: true
+  project:
+    name: memphisraynz.easy_skyfandc_s3
+    version: "0.9.3"
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+dashboard_import:
+  package_import_url: github://memphisraynz/skyfandc/skyfan_micro_s3.yaml@main # Review this for ESP32 compatibility
+
+api:
+
+# Logger MUST be disabled on the default serial (USB) if it's used for Tuya
+logger:
+  baud_rate: 0
+
+# I2C pins for your XIAO ESP32S3
+# SDA: GPIO5
+# SCL: GPIO6
+i2c:
+  sda: GPIO5
+  scl: GPIO6
+  scan: true
+
+ota:
+  - platform: esphome
+
+wifi:
+  ap:
+    password: "" # Consider setting a password for security
+
+captive_portal:
+
+# UART configuration to use the native USB-CDC (UART0) for Tuya
+# This dedicates the XIAO's USB-C port to Tuya communication after boot.
+# OTA updates will be necessary for new firmware.
+uart:
+  id: tuya_usb_uart
+  # For ESP32-S3, UART0 is the console/CDC UART.
+  # We do not specify tx_pin and rx_pin as they are fixed to the internal USB PHY.
+  # ESPHome will use the default pins for UART0 (which are the USB D- and D+ pins).
+  baud_rate: 9600 # Ensure this matches your Tuya device's requirement
+  # parity: NONE # Default
+  # stop_bits: 1 # Default
+
+tuya:
+  id: tuyamcu
+  uart_id: tuya_usb_uart # Use the UART instance defined above
+
+switch:
+  - platform: gpio
+    pin:
+      number: GPIO21 # User LED on XIAO ESP32S3
+      inverted: true # Typically active low
+    id: led
+    name: "Board LED"

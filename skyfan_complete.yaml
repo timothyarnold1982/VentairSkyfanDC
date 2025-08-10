@@ -41,8 +41,12 @@ ota:
   - platform: esphome
 
 wifi:
-  ap:
-    password: ""
+  ssid: "DecoS4"
+  password: "BK^7$688i3V*"
+  manual_ip:
+    static_ip: 192.168.68.134 #your_device_ip_here
+    gateway: 192.168.68.1 #your_gateway_here
+    subnet: 255.255.255.0
     
 captive_portal:
 
@@ -236,17 +240,19 @@ select:
     name: ${fan_name} Mode
     enum_datapoint: 2
     options:
-      0: NORMAL
-      1: ECO
-      2: SLEEP
-    disabled_by_default: true
+      0: Normal
+      1: Eco
+      2: Sleep
+    disabled_by_default: false
+    
   - platform: tuya
     name: ${light_name} Color Temperature
     enum_datapoint: 19
     options:
       0: Cool White
-      1: Neutral White
+      1: Natural White
       2: Warm White
+    disabled_by_default: false
 
   - id: datapoint_direction
     platform: tuya
@@ -254,9 +260,9 @@ select:
     name: ${fan_name} Direction
     enum_datapoint: 8
     options:
-      0: FORWARD
-      1: REVERSE
-    internal: true
+      0: Forward
+      1: Reverse
+    disabled_by_default: false
 
   - id: datapoint_timer
     platform: tuya
@@ -264,23 +270,22 @@ select:
     name: ${fan_name} Timer
     enum_datapoint: 22
     options:
-      0: NIL
-      1: 1_HOUR
-      2: 2_HOUR
-      3: 3_HOUR
-      4: 4_HOUR
-      5: 5_HOUR
-      6: 6_HOUR
-      7: 7_HOUR
-      8: 8_HOUR
-      9: 9_HOUR
-      10: 10_HOUR
-      11: 11_HOUR
-      12: 12_HOUR
-    disabled_by_default: true
+      0: Inactive
+      1: 1 hour
+      2: 2 hours
+      3: 3 hours
+      4: 4 hours
+      5: 5 hours
+      6: 6 hours
+      7: 7 hours
+      8: 8 hours
+      9: 9 hours
+      10: 10 hours
+      11: 11 hours
+      12: 12 hours
+    disabled_by_default: false
 
 number:
-
   - id: datapoint_speed
     platform: tuya
     tuya_id: tuyamcu

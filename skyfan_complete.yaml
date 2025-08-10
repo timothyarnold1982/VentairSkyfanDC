@@ -2,8 +2,8 @@ substitutions:
   device_name: easy-skyfandc
   temp_name: SkyFanDC-Temp
   skyfan_model: "SKY1203"
-  light_name: "SkyFan DC Light"
-  fan_name: "SkyFan DC Fan"
+  light_name: "Light"
+  fan_name: "Fan"
 
 esphome:
   name: ${device_name}

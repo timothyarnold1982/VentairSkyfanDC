@@ -9,7 +9,7 @@ esphome:
   name: ${device_name}
   name_add_mac_suffix: true
   project:
-    name: memphisraynz.easy_skyfandc
+    name: timothyarnold1982.VentairSkyfanDC
     version: "0.9"
 #  on_boot: #Setup temperature reading so you don't get a random reading come through at startup
 #    priority: -100
@@ -23,7 +23,7 @@ esp8266:
 
 #Dashboard import if you want to adopt the device on your esphome dashboard
 dashboard_import:
-  package_import_url: github://memphisraynz/skyfandc/skyfan_complete.yaml@main
+  package_import_url: github://timothyarnold1982/VentairSkyfanDC/skyfan_complete.yaml@main
 
 api:
 

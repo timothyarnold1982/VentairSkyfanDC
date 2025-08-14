@@ -4,8 +4,8 @@ substitutions:
   skyfan_model: "SKY1203"
   light_name: "Light"
   fan_name: "Fan"
-  power_fan_name: "$fan_name" Power
-  power_light_name: "$light_name" Power
+  power_fan_name: "$fan_name Power"
+  power_light_name: "$light_name Power"
 
 esphome:
   name: ${device_name}

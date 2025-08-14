@@ -1,5 +1,5 @@
 substitutions:
-  device_name: easy-skyfandc
+  device_name: skyfandc
   temp_name: SkyFanDC-Temp
   skyfan_model: "SKY1203"
   light_name: "Light"

@@ -24,7 +24,7 @@ esp32:
     type: arduino
 
 dashboard_import:
-  package_import_url: github://memphisraynz/skyfandc/skyfan_micro_s3.yaml@main # Review this for ESP32 compatibility
+  package_import_url: github://timothyarnold1982/VentairSkyfanDC/skyfan_complete.yaml@main
 
 api:
 

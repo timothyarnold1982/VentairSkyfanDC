@@ -13,12 +13,6 @@ esphome:
   project:
     name: timothyarnold1982.VentairSkyfanDC
     version: "0.9"
-#  on_boot: #Setup temperature reading so you don't get a random reading come through at startup
-#    priority: -100
-#    then:
-#      - switch.turn_on: led
-#      - delay: 2s
-#      - switch.turn_off: led
       
 esp8266:
   board: d1_mini
@@ -305,6 +299,10 @@ light:
     switch_datapoint: 15
     dimmer_datapoint: 16
     min_value: 0
+    min_value: 0
+    max_value: 5
+    restore_mode: ALWAYS_OFF
+    disabled_by_default: false
 
 sensor:
   - id: fan_power
@@ -327,10 +325,7 @@ sensor:
       } else {
         return 0.0;
       }
-    disabled_by_default: false
-    max_value: 5
-    restore_mode: ALWAYS_OFF
-    disabled_by_default: false
+    disabled_by_default: true
 
   - id: power_light
     platform: template
